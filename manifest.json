@@ -7,7 +7,7 @@
     "describe": ""
   },
   "describe": "EH 里站镜像插件，可与原版 e-hentai 共存",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "home": "https://github.com/swlt-silica/Breeze-plugin-ehentai",
   "updateUrl": "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest",
   "npmName": "",
