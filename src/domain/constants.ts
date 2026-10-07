@@ -6,7 +6,7 @@ export const PLUGIN_VERSION = "0.0.52";
 export const PLUGIN_ICON_URL = "";
 export const PLUGIN_HOME = "https://github.com/swlt-silica/Breeze-plugin-ehentai";
 export const PLUGIN_UPDATE_URL =
-  "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest";
+  "https://raw.githubusercontent.com/swlt-silica/Breeze-plugin-ehentai/main/update.json";
 export const PLUGIN_CREATOR = {
   name: "swlt-silica",
   describe: "",

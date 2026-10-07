@@ -69,3 +69,15 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true
+
+      - name: Publish update manifest after release assets
+        run: |
+          node build/write-update-manifest.js
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add update.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "chore: publish update manifest for ${{ steps.version.outputs.release_tag }}"
+          git push origin HEAD:${{ github.ref_name }}
