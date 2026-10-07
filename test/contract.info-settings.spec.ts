@@ -6,7 +6,7 @@ describe("info and settings contract", () => {
   test("test_getInfo_returns_plugin_metadata", async () => {
     const info = await getInfo();
     expect(info).toMatchObject({
-      name: "EH ��վ����",
+      name: "EH 里站镜像",
       uuid: PLUGIN_UUID,
       npmName: "breeze-plugin-ehentai-mirror",
     });

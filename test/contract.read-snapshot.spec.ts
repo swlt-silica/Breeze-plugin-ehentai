@@ -6,7 +6,7 @@ import { DEFERRED_IMAGE_PATH } from "../src/domain/constants";
 function firstSnapshotPageFixture(): string {
   return `
     <div id="gn">English Gallery Title</div>
-    <div id="gj">�b�쐽��������</div>
+    <div id="gj">゜掛惤正奶玄伙</div>
     <div id="gdc"><div class="cs">Manga</div></div>
     <div id="gdn"><a>uploader-name</a></div>
     <div id="gdd">

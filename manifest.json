@@ -1,12 +1,12 @@
 {
-  "name": "EH ��վ����",
+  "name": "EH 里站镜像",
   "uuid": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
   "iconUrl": "",
   "creator": {
     "name": "swlt-silica",
     "describe": ""
   },
-  "describe": "EH ��վ������������ԭ�� e-hentai ����",
+  "describe": "EH 里站镜像插件，可与原版 e-hentai 共存",
   "version": "0.0.49",
   "home": "https://github.com/swlt-silica/Breeze-plugin-ehentai",
   "updateUrl": "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest",
@@ -14,12 +14,12 @@
   "function": [
     {
       "id": "latest",
-      "title": "����",
+      "title": "最新",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "����",
+            "title": "最新",
             "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
@@ -37,12 +37,12 @@
     },
     {
       "id": "popular",
-      "title": "����",
+      "title": "热门",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "����",
+            "title": "热门",
             "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
@@ -60,12 +60,12 @@
     },
     {
       "id": "ranking",
-      "title": "���а�",
+      "title": "排行榜",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "���а�",
+            "title": "排行榜",
             "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
@@ -91,12 +91,12 @@
     },
     {
       "id": "favorites",
-      "title": "�ղ�",
+      "title": "收藏",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "�ղ�",
+            "title": "收藏",
             "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",

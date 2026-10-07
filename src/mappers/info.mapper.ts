@@ -60,12 +60,12 @@ export function mapInfo(): InfoContract {
     function: [
       {
         id: "latest",
-        title: "����",
+        title: "最新",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "����",
+              title: "最新",
               request: {
                 fnPath: "getLatestData",
                 extern: { source: "latest" },
@@ -76,12 +76,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "popular",
-        title: "����",
+        title: "热门",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "����",
+              title: "热门",
               request: {
                 fnPath: "getPopularData",
                 extern: { source: "popular" },
@@ -92,12 +92,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "ranking",
-        title: "���а�",
+        title: "排行榜",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "���а�",
+              title: "排行榜",
               request: {
                 fnPath: "getRankingData",
                 extern: { source: "ranking", rankType: "day" },
@@ -112,12 +112,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "favorites",
-        title: "�ղ�",
+        title: "收藏",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "�ղ�",
+              title: "收藏",
               request: {
                 fnPath: "getFavorites",
                 extern: {},

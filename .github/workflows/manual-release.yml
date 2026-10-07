@@ -64,7 +64,7 @@ jobs:
         with:
           tag: ${{ steps.version.outputs.release_tag }}
           name: ${{ steps.version.outputs.release_tag }}
-          body: �Զ�����
+          body: 自动更新
           artifacts: dist/breeze-plugin-ehentai-mirror.bundle.cjs,dist/breeze-plugin-ehentai-mirror.bundle.cjs.br
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
