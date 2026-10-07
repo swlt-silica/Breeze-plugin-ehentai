@@ -46,8 +46,8 @@ export function parsePaging($: CheerioAPI): {
     .filter((value) => value > 0);
   const pages = pageCandidates.length ? Math.max(...pageCandidates) : selectedPage;
 
-  const totalText = normalizeWhitespace($(".ip").first().text());
-  const totalMatch = /(\d[\d,]*)\s+results?/i.exec(totalText);
+  const totalText = normalizeWhitespace($(".ip, .searchtext").first().text());
+  const totalMatch = /(\d[\d,]*)\s+(?:results?|个结果)/i.exec(totalText);
   const total = toInt(totalMatch?.[1], 0);
   const nextUrl = findNavHref(["dnext", "unext"]);
   const prevUrl = findNavHref(["dprev", "uprev"]);
@@ -145,18 +145,19 @@ export function parseGalleryListItems(
   const items = $(".itg .gl3c.glname, .itg .gl3m.glname, .itg .glname")
     .map((_, node) => {
       const root = $(node);
-      const anchor = root.find("a").first();
+      // Thumbnail mode places the title inside the gallery anchor, while
+      // compact/table modes place the anchor inside the title container.
+      const childAnchor = root.find("a[href*='/g/']").first();
+      const anchor = childAnchor.length ? childAnchor : root.closest("a[href*='/g/']");
       const href = String(anchor.attr("href") ?? "").trim();
       const idMatch = DETAIL_ID_REGEX.exec(href);
       const id = idMatch ? buildTokenizedComicId(idMatch[1], idMatch[2]) : "";
-      const title = normalizeWhitespace(root.find(".glink").text() || anchor.text());
+      const title = normalizeWhitespace(root.find(".glink").text() || root.text() || anchor.text());
       const coverUrl = resolveCoverUrl(root);
-      const category = normalizeWhitespace(
-        root.closest("tr").find(categorySelector).first().text(),
-      );
-      const uploader = normalizeWhitespace(
-        root.closest("tr").find(".gl4c a, .gl5m a").first().text(),
-      );
+      const row = root.closest("tr");
+      const card = row.length ? row : root.closest(".itg > div");
+      const category = normalizeWhitespace(card.find(`${categorySelector}, .cs`).first().text());
+      const uploader = normalizeWhitespace(card.find(".gl4c a, .gl5m a").first().text());
 
       return {
         id,

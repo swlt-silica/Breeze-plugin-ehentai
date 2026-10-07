@@ -13,6 +13,29 @@ afterEach(() => {
 });
 
 describe("search contract", () => {
+  test("test_searchComic_mirror_thumbnail_layout_returns_items_and_cursor", async () => {
+    const getText = rs
+      .spyOn(httpClient, "getText")
+      .mockResolvedValue(fixture("search-mirror-thumbnail.html"));
+    const result = await searchComic({ keyword: "test", extern: { site: "MIRROR" } });
+    expect(getText).toHaveBeenCalledWith("https://ex.4545810.xyz/?f_search=test");
+    expect(result.data.items).toHaveLength(2);
+    expect(result.data.items[0]).toMatchObject({
+      id: "123456-abcdef",
+      title: "Mirror gallery one",
+      subtitle: "同人志",
+      cover: { url: "https://ehgt.org/w/02/698/sample.webp" },
+    });
+    expect(result.data.paging).toMatchObject({ total: 3199, hasReachedMax: false });
+    expect(result.extern?.nextUrl).toBe("/?f_search=test&next=123455");
+    await searchComic({
+      keyword: "test",
+      page: 2,
+      extern: { site: "MIRROR", nextUrl: result.extern?.nextUrl },
+    });
+    expect(getText).toHaveBeenLastCalledWith("https://ex.4545810.xyz/?f_search=test&next=123455");
+  });
+
   test("test_searchComic_valid_keyword_returns_search_result", async () => {
     rs.spyOn(httpClient, "getText").mockResolvedValueOnce(fixture("search.html"));
 
