@@ -6,9 +6,11 @@ describe("info and settings contract", () => {
   test("test_getInfo_returns_plugin_metadata", async () => {
     const info = await getInfo();
     expect(info).toMatchObject({
-      name: "e-hentai",
+      name: "EH ��վ����",
       uuid: PLUGIN_UUID,
+      npmName: "breeze-plugin-ehentai-mirror",
     });
+    expect(info.uuid).not.toBe("dba2a6cf-c495-4416-accf-c29263ab4016");
     expect(info.function.map((item) => item.id)).toEqual([
       "latest",
       "popular",

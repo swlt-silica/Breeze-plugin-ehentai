@@ -32,35 +32,35 @@ describe("detail contract", () => {
     expect(result.data.normal.totalComments).toBe(1);
     expect(String(getTextSpy.mock.calls[0]?.[0] ?? "")).toContain("hc=1");
     expect(result.data.normal.comicInfo.titleMeta[0]).toMatchObject({
-      name: "副标题：日本語タイトル",
+      name: "�����⣺�ձ��Z�����ȥ�",
       onTap: {},
       extern: {},
     });
     expect(result.data.normal.comicInfo.titleMeta[1]).toMatchObject({
-      name: "分类：Manga",
+      name: "���ࣺManga",
       onTap: {},
       extern: {},
     });
     expect(result.data.normal.comicInfo.titleMeta[3]).toMatchObject({
-      name: "语言：English TR",
+      name: "���ԣ�English TR",
       onTap: {},
       extern: {},
     });
     expect(result.data.normal.comicInfo.titleMeta).toContainEqual({
-      name: "副标题：日本語タイトル",
+      name: "�����⣺�ձ��Z�����ȥ�",
       onTap: {},
       extern: {},
     });
     expect(result.data.normal.comicInfo.metadata).toContainEqual({
       type: "tag:artist",
-      name: "艺术家",
+      name: "������",
       value: [
         {
           name: "foo artist",
           onTap: {
             type: "openSearch",
             payload: {
-              source: "ehentai",
+              source: "ehentai-mirror",
               keyword: "artist:foo artist",
               extern: {},
             },
@@ -138,9 +138,9 @@ describe("detail contract", () => {
 
     const result = await getComicDetail({ comicId: "123456/abcdef" });
     const names = result.data.normal.comicInfo.titleMeta.map((item) => item.name);
-    expect(names).toContain("上传者：Disowned");
-    expect(names).toContain("收藏：94 次");
-    expect(names).toContain("评分：2.52（27）");
+    expect(names).toContain("�ϴ��ߣ�Disowned");
+    expect(names).toContain("�ղأ�94 ��");
+    expect(names).toContain("���֣�2.52��27��");
     expect(result.data.normal.comicInfo.metadata).toEqual([]);
   });
 
@@ -165,13 +165,13 @@ describe("detail contract", () => {
     expect(result.data.normal.comicInfo.metadata).toContainEqual(
       expect.objectContaining({
         type: "tag:language",
-        name: "语言",
+        name: "����",
         value: [
           expect.objectContaining({
             onTap: {
               type: "openSearch",
               payload: {
-                source: "ehentai",
+                source: "ehentai-mirror",
                 keyword: "language:english",
                 extern: {},
               },
@@ -186,8 +186,8 @@ describe("detail contract", () => {
   test("test_getComicDetail_title_prefers_chinese_over_japanese_and_english", async () => {
     rs.spyOn(httpClient, "getText").mockResolvedValueOnce(`
       <div id="gd1"><img src="https://ehgt.org/c/detail-cover.jpg" /></div>
-      <div id="gn">刻晴与旅行者</div>
-      <div id="gj">けいせい</div>
+      <div id="gn">������������</div>
+      <div id="gj">��������</div>
       <div id="gdc"><div class="cs">Misc</div></div>
       <div id="gdn"><a>uploader-name</a></div>
       <div id="gdd">
@@ -200,7 +200,7 @@ describe("detail contract", () => {
     `);
 
     const result = await getComicDetail({ comicId: "123456/abcdef" });
-    expect(result.data.normal.comicInfo.title).toBe("刻晴与旅行者");
+    expect(result.data.normal.comicInfo.title).toBe("������������");
   });
 
   test("test_getComicDetail_invalid_comicId_path_segment_returns_validation_error", async () => {

@@ -3,6 +3,7 @@ import {
   DEFAULT_TIMEOUT_MS,
   MAX_CONCURRENT_REQUESTS,
   MAX_RETRY_ATTEMPTS,
+  MIRROR_BASE_URL,
 } from "../domain/constants";
 import { networkError } from "../errors/plugin-error";
 
@@ -54,8 +55,17 @@ function formatNetworkFailureMessage(message: string, details: Record<string, un
 }
 
 export function buildSafeRequestConfig(config?: AxiosRequestConfig): AxiosRequestConfig {
+  let isMirrorRequest = false;
+  try {
+    isMirrorRequest = new URL(String(config?.url ?? "")).origin === MIRROR_BASE_URL;
+  } catch {
+    // A config without a URL is also used by callers and tests.
+  }
   return {
     ...config,
+    ...(isMirrorRequest
+      ? { headers: { ...config?.headers, "Accept-Language": "zh-CN,zh;q=0.9" } }
+      : {}),
     maxRedirects: 0,
   };
 }

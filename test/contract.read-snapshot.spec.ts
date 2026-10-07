@@ -6,7 +6,7 @@ import { DEFERRED_IMAGE_PATH } from "../src/domain/constants";
 function firstSnapshotPageFixture(): string {
   return `
     <div id="gn">English Gallery Title</div>
-    <div id="gj">゜掛惤正奶玄伙</div>
+    <div id="gj">�b�쐽��������</div>
     <div id="gdc"><div class="cs">Manga</div></div>
     <div id="gdn"><a>uploader-name</a></div>
     <div id="gdd">
@@ -97,7 +97,7 @@ describe("read snapshot contract", () => {
     getTextSpy.mockResolvedValueOnce(firstSnapshotPageFixture());
 
     const result = await getReadSnapshot({ comicId: "123456/abcdef", chapterId: "123456/abcdef" });
-    expect(result.source).toBe("ehentai");
+    expect(result.source).toBe("ehentai-mirror");
     expect(result.data.comic.id).toBe("123456/abcdef");
     expect(result.data.comic.title).toBe("English Gallery Title");
     expect(result.data.chapter.id).toBe("123456/abcdef");

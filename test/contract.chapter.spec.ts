@@ -153,7 +153,7 @@ describe("chapter contract", () => {
       chapterId: "123456/abcdef",
       page: 1,
     });
-    expect(result.source).toBe("ehentai");
+    expect(result.source).toBe("ehentai-mirror");
     expect(result.data.comic.id).toBe("123456/abcdef");
     expect(result.data.chapter.id).toBe("123456/abcdef");
     expect(result.data.chapter.pages).toHaveLength(3);

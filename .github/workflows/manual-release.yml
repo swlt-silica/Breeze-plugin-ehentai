@@ -56,16 +56,16 @@ jobs:
 
       - name: Ensure release assets exist
         run: |
-          test -f dist/breeze-plugin-ehentai.bundle.cjs
-          test -f dist/breeze-plugin-ehentai.bundle.cjs.br
+          test -f dist/breeze-plugin-ehentai-mirror.bundle.cjs
+          test -f dist/breeze-plugin-ehentai-mirror.bundle.cjs.br
 
       - name: Publish release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.version.outputs.release_tag }}
           name: ${{ steps.version.outputs.release_tag }}
-          body: 自动更新
-          artifacts: dist/breeze-plugin-ehentai.bundle.cjs,dist/breeze-plugin-ehentai.bundle.cjs.br
+          body: �Զ�����
+          artifacts: dist/breeze-plugin-ehentai-mirror.bundle.cjs,dist/breeze-plugin-ehentai-mirror.bundle.cjs.br
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true

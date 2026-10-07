@@ -56,16 +56,16 @@ export function mapInfo(): InfoContract {
     version: PLUGIN_VERSION,
     home: PLUGIN_HOME,
     updateUrl: PLUGIN_UPDATE_URL,
-    npmName: "breeze-plugin-ehentai",
+    npmName: "breeze-plugin-ehentai-mirror",
     function: [
       {
         id: "latest",
-        title: "最新",
+        title: "����",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "最新",
+              title: "����",
               request: {
                 fnPath: "getLatestData",
                 extern: { source: "latest" },
@@ -76,12 +76,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "popular",
-        title: "热门",
+        title: "����",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "热门",
+              title: "����",
               request: {
                 fnPath: "getPopularData",
                 extern: { source: "popular" },
@@ -92,12 +92,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "ranking",
-        title: "排行榜",
+        title: "���а�",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "排行榜",
+              title: "���а�",
               request: {
                 fnPath: "getRankingData",
                 extern: { source: "ranking", rankType: "day" },
@@ -112,12 +112,12 @@ export function mapInfo(): InfoContract {
       },
       {
         id: "favorites",
-        title: "收藏",
+        title: "�ղ�",
         action: {
           type: "openComicList",
           payload: {
             scene: buildComicListScene({
-              title: "收藏",
+              title: "�ղ�",
               request: {
                 fnPath: "getFavorites",
                 extern: {},

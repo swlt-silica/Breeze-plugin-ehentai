@@ -126,7 +126,7 @@ export async function getPreviewService(
         settings.site === "EX" && (incomingEhUnavailable || attempt.site === "EX");
 
       return {
-        source: "ehentai",
+        source: "ehentai-mirror",
         comicId,
         extern: {
           ...asRecord(payload.extern),
@@ -135,7 +135,7 @@ export async function getPreviewService(
         scheme: {
           version: "1.0.0",
           type: "previewContent",
-          source: "ehentai",
+          source: "ehentai-mirror",
         },
         data: {
           preview: {

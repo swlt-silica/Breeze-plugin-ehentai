@@ -1,26 +1,26 @@
 {
-  "name": "e-hentai",
-  "uuid": "dba2a6cf-c495-4416-accf-c29263ab4016",
+  "name": "EH ��վ����",
+  "uuid": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
   "iconUrl": "",
   "creator": {
-    "name": "",
+    "name": "swlt-silica",
     "describe": ""
   },
-  "describe": "e-hentai minimal reader plugin",
-  "version": "0.0.47",
+  "describe": "EH ��վ������������ԭ�� e-hentai ����",
+  "version": "0.0.48",
   "home": "https://github.com/swlt-silica/Breeze-plugin-ehentai",
   "updateUrl": "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest",
-  "npmName": "breeze-plugin-ehentai",
+  "npmName": "breeze-plugin-ehentai-mirror",
   "function": [
     {
       "id": "latest",
-      "title": "最新",
+      "title": "����",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "最新",
-            "source": "dba2a6cf-c495-4416-accf-c29263ab4016",
+            "title": "����",
+            "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
               "request": {
@@ -37,13 +37,13 @@
     },
     {
       "id": "popular",
-      "title": "热门",
+      "title": "����",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "热门",
-            "source": "dba2a6cf-c495-4416-accf-c29263ab4016",
+            "title": "����",
+            "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
               "request": {
@@ -60,13 +60,13 @@
     },
     {
       "id": "ranking",
-      "title": "排行榜",
+      "title": "���а�",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "排行榜",
-            "source": "dba2a6cf-c495-4416-accf-c29263ab4016",
+            "title": "���а�",
+            "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
               "request": {
@@ -91,13 +91,13 @@
     },
     {
       "id": "favorites",
-      "title": "收藏",
+      "title": "�ղ�",
       "action": {
         "type": "openComicList",
         "payload": {
           "scene": {
-            "title": "收藏",
-            "source": "dba2a6cf-c495-4416-accf-c29263ab4016",
+            "title": "�ղ�",
+            "source": "802f67a9-1e21-4208-80a0-3b72079ecf5b",
             "body": {
               "type": "pluginPagedComicList",
               "request": {

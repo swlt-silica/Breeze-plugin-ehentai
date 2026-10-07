@@ -27,7 +27,7 @@ function formatMessage(message: string, details?: PluginErrorDetails): string {
 }
 
 export class PluginError extends Error {
-  public readonly source = "ehentai";
+  public readonly source = "ehentai-mirror";
 
   constructor(
     public readonly code: PluginErrorCode,

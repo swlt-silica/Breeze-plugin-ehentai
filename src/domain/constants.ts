@@ -1,14 +1,14 @@
-export const PLUGIN_SOURCE = "ehentai";
-export const PLUGIN_UUID = "dba2a6cf-c495-4416-accf-c29263ab4016";
-export const PLUGIN_NAME = "e-hentai";
-export const PLUGIN_DESCRIPTION = "e-hentai minimal reader plugin";
-export const PLUGIN_VERSION = "0.0.47";
+export const PLUGIN_SOURCE = "ehentai-mirror";
+export const PLUGIN_UUID = "802f67a9-1e21-4208-80a0-3b72079ecf5b";
+export const PLUGIN_NAME = "EH ��վ����";
+export const PLUGIN_DESCRIPTION = "EH ��վ������������ԭ�� e-hentai ����";
+export const PLUGIN_VERSION = "0.0.48";
 export const PLUGIN_ICON_URL = "";
 export const PLUGIN_HOME = "https://github.com/swlt-silica/Breeze-plugin-ehentai";
 export const PLUGIN_UPDATE_URL =
   "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest";
 export const PLUGIN_CREATOR = {
-  name: "",
+  name: "swlt-silica",
   describe: "",
 };
 
