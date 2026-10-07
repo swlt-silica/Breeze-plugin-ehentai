@@ -70,7 +70,7 @@ describe("function page contract", () => {
 
     expect(getTextSpy).toHaveBeenCalledTimes(1);
     const calledUrl = String(getTextSpy.mock.calls[0]?.[0] ?? "");
-    expect(calledUrl).toBe("https://e-hentai.org/");
+    expect(calledUrl).toBe("https://ex.4545810.xyz/");
     expect(result.scheme.type).toBe("latestFeed");
     expect(result.data.items).toHaveLength(2);
     expect(result.data.items[0]).toMatchObject({
@@ -117,7 +117,7 @@ describe("function page contract", () => {
     expect(getTextSpy).toHaveBeenCalledTimes(2);
     const firstUrl = String(getTextSpy.mock.calls[0]?.[0] ?? "");
     const secondUrl = String(getTextSpy.mock.calls[1]?.[0] ?? "");
-    expect(firstUrl).toBe("https://e-hentai.org/");
+    expect(firstUrl).toBe("https://ex.4545810.xyz/");
     expect(secondUrl).toContain("next=7770001");
     expect(result.data.items).toHaveLength(2);
     expect(result.data.items[0]).toMatchObject({
@@ -147,7 +147,7 @@ describe("function page contract", () => {
     const result = (await getPopularData({ page: 1 })) as unknown as FunctionPageFeed;
 
     expect(getTextSpy).toHaveBeenCalledTimes(1);
-    expect(String(getTextSpy.mock.calls[0]?.[0] ?? "")).toBe("https://e-hentai.org/popular");
+    expect(String(getTextSpy.mock.calls[0]?.[0] ?? "")).toBe("https://ex.4545810.xyz/popular");
     expect(result.scheme.type).toBe("popularFeed");
   });
 

@@ -3,6 +3,7 @@ import { continueFavoriteAction, getComicDetail, startFavoriteAction } from "../
 import { httpClient } from "../src/network/client";
 
 const AUTH_EXTERN = {
+  site: "EH",
   ipb_member_id: "123456",
   ipb_pass_hash: "deadbeef",
 };

@@ -22,7 +22,7 @@ export type FetchImageBytesPayload = {
   extern?: Record<string, unknown>;
 };
 
-export type SiteSetting = "EH" | "EX";
+export type SiteSetting = "EH" | "EX" | "MIRROR";
 
 export type PluginSettings = {
   site: SiteSetting;

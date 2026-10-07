@@ -4,9 +4,9 @@ export const PLUGIN_NAME = "e-hentai";
 export const PLUGIN_DESCRIPTION = "e-hentai minimal reader plugin";
 export const PLUGIN_VERSION = "0.0.45";
 export const PLUGIN_ICON_URL = "";
-export const PLUGIN_HOME = "https://github.com/deretame/Breeze-plugin-ehentai";
+export const PLUGIN_HOME = "https://github.com/swlt-silica/Breeze-plugin-ehentai";
 export const PLUGIN_UPDATE_URL =
-  "https://api.github.com/repos/deretame/Breeze-plugin-ehentai/releases/latest";
+  "https://api.github.com/repos/swlt-silica/Breeze-plugin-ehentai/releases/latest";
 export const PLUGIN_CREATOR = {
   name: "",
   describe: "",
@@ -14,6 +14,7 @@ export const PLUGIN_CREATOR = {
 
 export const EH_BASE_URL = "https://e-hentai.org";
 export const EX_BASE_URL = "https://exhentai.org";
+export const MIRROR_BASE_URL = "https://ex.4545810.xyz";
 export const DEFERRED_IMAGE_PATH = "/_breeze/read-image";
 export const PREVIEW_IMAGE_PATH = "/_breeze/preview-image";
 export const PREVIEW_IMAGE_KIND = "ehentai-preview-native-v1";
@@ -30,6 +31,7 @@ export const MAX_RETRY_ATTEMPTS = 2;
 export const MAX_CONCURRENT_REQUESTS = 4;
 
 export const ALLOWED_ENDPOINT_HOSTS = new Set([
+  new URL(MIRROR_BASE_URL).hostname,
   "e-hentai.org",
   "exhentai.org",
   "api.e-hentai.org",
@@ -37,6 +39,7 @@ export const ALLOWED_ENDPOINT_HOSTS = new Set([
 ]);
 
 export const ALLOWED_MEDIA_HOSTS = new Set([
+  new URL(MIRROR_BASE_URL).hostname,
   "e-hentai.org",
   "exhentai.org",
   "s.exhentai.org",
@@ -44,7 +47,7 @@ export const ALLOWED_MEDIA_HOSTS = new Set([
 ]);
 
 export const DEFAULT_SETTINGS = {
-  site: "EH",
+  site: "MIRROR",
   imageProxyEnabled: false,
   ipb_member_id: "",
   ipb_pass_hash: "",

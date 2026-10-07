@@ -92,8 +92,8 @@ export function normalizePage(value: unknown, fallback = 1): number {
 }
 
 export function validateSettingsInput(input: Record<string, unknown>): PluginSettings {
-  const siteRaw = String(input.site ?? "EH").toUpperCase();
-  const site: SiteSetting = siteRaw === "EX" ? "EX" : "EH";
+  const siteRaw = String(input.site ?? "MIRROR").toUpperCase();
+  const site: SiteSetting = siteRaw === "MIRROR" ? "MIRROR" : siteRaw === "EX" ? "EX" : "EH";
 
   const imageProxyEnabled =
     typeof input.imageProxyEnabled === "boolean"

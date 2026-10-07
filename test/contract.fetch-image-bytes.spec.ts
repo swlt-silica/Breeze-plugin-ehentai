@@ -59,7 +59,7 @@ describe("fetchImageBytes contract", () => {
       },
     });
 
-    expect(getTextSpy).toHaveBeenCalledWith("https://e-hentai.org/s/a1/123-1");
+    expect(getTextSpy).toHaveBeenCalledWith("https://ex.4545810.xyz/s/a1/123-1");
     expect(getBytesSpy).toHaveBeenCalledWith("https://ehgt.org/full/1.jpg", undefined);
     expect(result).toEqual(bytes);
   });

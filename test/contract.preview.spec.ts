@@ -54,7 +54,7 @@ describe("preview contract", () => {
     const result = await getPreview({ comicId: "123456/abcdef", page: 1 });
     const items = result.data.preview.items;
 
-    expect(getTextSpy).toHaveBeenCalledWith("https://e-hentai.org/g/123456/abcdef/");
+    expect(getTextSpy).toHaveBeenCalledWith("https://ex.4545810.xyz/g/123456/abcdef/");
     expect(getBytesSpy).toHaveBeenCalledTimes(1);
     expect(bridgeCall).toHaveBeenCalledWith("image.crop_by_regions", new Uint8Array([9, 8, 7]), [
       { number: 1, x: 0, y: 0, width: 200, height: 284 },

@@ -1,4 +1,5 @@
 import type { PluginSettings, SiteSetting } from "../domain/types";
+import { MIRROR_BASE_URL } from "../domain/constants";
 import { buildRequestConfig, removeCookieNames } from "./settings.service";
 import { asRecord } from "../utils/guards";
 
@@ -82,7 +83,10 @@ export function remapGalleryHostForSite(input: string, site: SiteSetting): strin
 
   try {
     const parsed = new URL(raw);
-    if (site === "EH" && parsed.hostname === "exhentai.org") {
+    if (site === "MIRROR" && ["e-hentai.org", "exhentai.org"].includes(parsed.hostname)) {
+      parsed.host = new URL(MIRROR_BASE_URL).host;
+      parsed.protocol = "https:";
+    } else if (site === "EH" && parsed.hostname === "exhentai.org") {
       parsed.hostname = "e-hentai.org";
     } else if (site === "EX" && parsed.hostname === "e-hentai.org") {
       parsed.hostname = "exhentai.org";

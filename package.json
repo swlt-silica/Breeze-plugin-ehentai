@@ -5,7 +5,7 @@
   "packageManager": "pnpm@11.5.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deretame/Breeze-plugin-ehentai.git"
+    "url": "git+https://github.com/swlt-silica/Breeze-plugin-ehentai.git"
   },
   "files": [
     "dist"

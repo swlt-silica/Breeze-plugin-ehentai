@@ -4,7 +4,8 @@ import { toInt } from "../utils/number";
 
 const RANGE_REGEX = /Showing\s+(\d+)\s*-\s*(\d+)\s+of\s+([\d,]+)\s+images/i;
 const RELOAD_KEY_REGEX = /return\s+nl\('([^']+)'\)/;
-const MPV_HREF_REGEX = /(https?:\/\/(?:e-hentai|exhentai)\.org)\/mpv\/(\d+)\/[^/?#]+/i;
+const MPV_HREF_REGEX =
+  /(https?:\/\/(?:e-hentai\.org|exhentai\.org|ex\.4545810\.xyz))\/mpv\/(\d+)\/[^/?#]+/i;
 const EH_509_IMAGE_PATH = "/g/509.gif";
 const EX_509_IMAGE_PATH = "/img/509.gif";
 

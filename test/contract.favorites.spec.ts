@@ -22,6 +22,7 @@ type FavoritesFeed = {
 };
 
 const AUTH_EXTERN = {
+  site: "EH",
   ipb_member_id: "123456",
   ipb_pass_hash: "deadbeef",
 };

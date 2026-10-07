@@ -1,11 +1,12 @@
-import { EH_BASE_URL, EX_BASE_URL } from "../domain/constants";
+import { EH_BASE_URL, EX_BASE_URL, MIRROR_BASE_URL } from "../domain/constants";
+import { remapGalleryHostForSite } from "../services/site-routing.service";
 import type { SiteSetting } from "../domain/types";
 import { splitComicId } from "../utils/guards";
 import { validationError } from "../errors/plugin-error";
 import { ensureAllowedHostUrl } from "../utils/url";
 
 function resolveSiteBase(site: SiteSetting): string {
-  return site === "EX" ? EX_BASE_URL : EH_BASE_URL;
+  return site === "MIRROR" ? MIRROR_BASE_URL : site === "EX" ? EX_BASE_URL : EH_BASE_URL;
 }
 
 export function buildSearchEndpoint(
@@ -33,7 +34,7 @@ export function buildSearchEndpoint(
 }
 
 export function buildSearchNavigationEndpoint(navigationUrl: string, site: SiteSetting): string {
-  return ensureAllowedHostUrl(navigationUrl, resolveSiteBase(site));
+  return ensureAllowedHostUrl(remapGalleryHostForSite(navigationUrl, site), resolveSiteBase(site));
 }
 
 export function buildFavoritesEndpoint(

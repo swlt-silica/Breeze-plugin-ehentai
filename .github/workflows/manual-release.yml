@@ -2,8 +2,6 @@ name: Manual Release
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 3 * * 1"
 
 permissions:
   contents: write
@@ -71,6 +69,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true
-
-      - name: Publish to npm
-        run: npm publish --ignore-scripts

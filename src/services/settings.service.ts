@@ -311,6 +311,10 @@ export function sanitizeForumCookie(rawCookie: unknown): string {
 }
 
 export function buildRequestHeaders(settings: PluginSettings): Record<string, string> {
+  // Official account cookies must never be sent to the third-party mirror.
+  if (settings.site === "MIRROR") {
+    return {};
+  }
   const cookie = sanitizeForumCookie(settings.forumCookie);
   if (!cookie) {
     return {};

@@ -20,6 +20,7 @@ export function mapSettingsBundle(
               kind: "choice",
               label: "站点",
               options: [
+                { label: "里站镜像（ex.4545810.xyz，无需官方 Cookie）", value: "MIRROR" },
                 { label: "表站", value: "EH" },
                 { label: "里站", value: "EX" },
               ],
