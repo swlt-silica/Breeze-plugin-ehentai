@@ -22,15 +22,16 @@ import {
 async function resolveImageUrlFromImagePage(
   imagePageHref: string,
   requestConfig: RequestConfig,
-): Promise<string> {
+  reloadKeyOverride?: string,
+) {
   const safeImagePageHref = ensureAllowedHostUrl(imagePageHref);
   const imagePageHtml = requestConfig
-    ? await httpClient.getText(buildImagePageEndpoint(safeImagePageHref), requestConfig)
-    : await httpClient.getText(buildImagePageEndpoint(safeImagePageHref));
+    ? await httpClient.getText(buildImagePageEndpoint(safeImagePageHref, reloadKeyOverride), requestConfig)
+    : await httpClient.getText(buildImagePageEndpoint(safeImagePageHref, reloadKeyOverride));
 
   try {
     const parsed = parseImagePage(safeImagePageHref, imagePageHtml);
-    return ensureAllowedMediaUrl(parsed.imageUrl);
+    return { ...parsed, imageUrl: ensureAllowedMediaUrl(parsed.imageUrl) };
   } catch (error) {
     if (error instanceof PluginError && error.code === "UPSTREAM_BLOCKED") {
       throw error;
@@ -48,7 +49,7 @@ async function resolveImageUrlFromImagePage(
         )
       : await httpClient.getText(buildImagePageEndpoint(safeImagePageHref, reloadKey));
     const retried = parseImagePage(safeImagePageHref, retriedHtml);
-    return ensureAllowedMediaUrl(retried.imageUrl);
+    return { ...retried, imageUrl: ensureAllowedMediaUrl(retried.imageUrl) };
   }
 }
 
@@ -112,14 +113,31 @@ export async function fetchImageBytesService(
         : undefined;
       const mediaUrl = remapGalleryHostForSite(rawUrl, attempt.site);
 
-      const imageUrl = imagePageHref
+      const resolved = imagePageHref
         ? await resolveImageUrlFromImagePage(imagePageHref, attempt.requestConfig)
-        : ensureAllowedMediaUrl(mediaUrl);
-
-      const imageBytes = attempt.requestConfig
-        ? await httpClient.getBytes(imageUrl, payload.timeoutMs, attempt.requestConfig)
-        : await httpClient.getBytes(imageUrl, payload.timeoutMs);
-      return imageBytes;
+        : { imageUrl: ensureAllowedMediaUrl(mediaUrl), reloadKey: undefined };
+      const download = (url: string) =>
+        attempt.requestConfig
+          ? httpClient.getBytes(url, payload.timeoutMs, attempt.requestConfig)
+          : httpClient.getBytes(url, payload.timeoutMs);
+      try {
+        return await download(resolved.imageUrl);
+      } catch (error) {
+        if (
+          !(error instanceof PluginError) ||
+          error.code !== "NETWORK_ERROR" ||
+          !imagePageHref ||
+          !resolved.reloadKey
+        ) {
+          throw error;
+        }
+        const alternate = await resolveImageUrlFromImagePage(
+          imagePageHref,
+          attempt.requestConfig,
+          resolved.reloadKey,
+        );
+        return await download(alternate.imageUrl);
+      }
     } catch (error) {
       lastError = error;
     }

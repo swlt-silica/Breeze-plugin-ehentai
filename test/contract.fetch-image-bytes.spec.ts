@@ -1,9 +1,27 @@
 import { afterEach, describe, expect, test, rs } from "@rstest/core";
 import { fetchImageBytes } from "../src/index";
 import { DEFERRED_IMAGE_PATH } from "../src/domain/constants";
+import { networkError } from "../src/errors/plugin-error";
 import { httpClient } from "../src/network/client";
 
 describe("fetchImageBytes contract", () => {
+  test("image DNS failure reloads the image page to obtain another server", async () => {
+    const getText = rs.spyOn(httpClient, "getText")
+      .mockResolvedValueOnce('<img id="img" src="https://first.hath.network/a.webp"><a id="loadfail" onclick="return nl(\'alternate-key\')">reload</a>')
+      .mockResolvedValueOnce('<img id="img" src="https://second.hath.network/a.webp">');
+    const bytes = new Uint8Array([71, 73, 70, 56, 57, 97]);
+    const getBytes = rs.spyOn(httpClient, "getBytes")
+      .mockRejectedValueOnce(networkError("dns lookup failed"))
+      .mockResolvedValueOnce(bytes);
+    const result = await fetchImageBytes({
+      url: `https://e-hentai.org${DEFERRED_IMAGE_PATH}`,
+      extern: { href: "https://ex.4545810.xyz/s/a1/123-1" },
+    });
+    expect(getText).toHaveBeenLastCalledWith("https://ex.4545810.xyz/s/a1/123-1?nl=alternate-key");
+    expect(getBytes).toHaveBeenLastCalledWith("https://second.hath.network/a.webp", undefined);
+    expect(result).toEqual(bytes);
+  });
+
   afterEach(() => {
     rs.restoreAllMocks();
   });
