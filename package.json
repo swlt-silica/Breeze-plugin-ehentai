@@ -1,6 +1,6 @@
 {
   "name": "breeze-plugin-ehentai-mirror",
-  "version": "0.0.49",
+  "version": "0.0.50",
   "type": "module",
   "packageManager": "pnpm@11.5.0",
   "repository": {
